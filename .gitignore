@@ -1,0 +1,15 @@
+# Dépendances et compilations
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Secrets : jamais versionnés (variables saisies dans Render)
+.env
+.env.*
+!.env.example
+!frontend/.env.production
+
+# Fichiers locaux
+.firebase/
+.claude/
+captures-*/

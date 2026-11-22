@@ -1,0 +1,37 @@
+# Blueprint Render : API Express de Riz de Niono (dossier backend/).
+# Les secrets (sync: false) se saisissent dans le tableau de bord Render, jamais dans ce fichier.
+services:
+  - type: web
+    name: riz-de-niono-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: frankfurt
+    # --include=dev : TypeScript est nécessaire à la compilation même avec NODE_ENV=production.
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/v1/sante
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      # Préversion de démonstration : base de tests (Hivernage 2026). Mettre riz_de_niono pour la production.
+      - key: MONGODB_BASE
+        value: riz_de_niono_tests
+      - key: URL_FRONTEND
+        value: https://riz-de-niono.web.app
+      - key: ORIGINES_AUTORISEES
+        value: https://riz-de-niono.web.app,https://riz-de-niono.firebaseapp.com
+      - key: MONGODB_URI
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: RESEND_FROM
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
