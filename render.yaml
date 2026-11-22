@@ -16,9 +16,10 @@ services:
         value: "22"
       - key: NODE_ENV
         value: production
-      # Préversion de démonstration : base de tests (Hivernage 2026). Mettre riz_de_niono pour la production.
+      # Base de production (données de démonstration copiées depuis la base de tests :
+      # npm run base:copier-tests -- --confirmer).
       - key: MONGODB_BASE
-        value: riz_de_niono_tests
+        value: riz_de_niono
       - key: URL_FRONTEND
         value: https://riz-de-niono.web.app
       - key: ORIGINES_AUTORISEES

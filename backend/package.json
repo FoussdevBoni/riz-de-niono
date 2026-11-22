@@ -17,6 +17,8 @@
     "test:services": "tsx --test tests/servicesExternes.test.ts",
     "mongo:verifier": "tsx src/database/verificationMongo.ts",
     "comptes:tests": "tsx src/database/comptesTests.ts",
+    "base:production": "tsx src/database/initialisationProduction.ts",
+    "base:copier-tests": "tsx src/database/copieTestsVersProduction.ts",
     "test:auth": "tsx --test tests/authentification.test.ts",
     "test:referentiels": "tsx --test tests/referentielsProduction.test.ts",
     "test:production-stock": "tsx --test tests/productionStock.test.ts",

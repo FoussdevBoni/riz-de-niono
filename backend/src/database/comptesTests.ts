@@ -28,14 +28,14 @@ export interface CompteTest {
   mot_de_passe: string;
 }
 
-const ROLE_ADMINISTRATEUR = {
+export const ROLE_ADMINISTRATEUR = {
   code: 'administrateur',
   nom: 'Administrateur',
   permissions: MODULES_PERMISSIONS.flatMap((module) => ACTIONS_PERMISSIONS.map((action) => ({ module, action }))),
 };
 
 /** Agent de terrain en production : consultation et saisie des opérations, aucun droit d'administration. */
-const ROLE_AGENT_PRODUCTION = {
+export const ROLE_AGENT_PRODUCTION = {
   code: 'agent_production',
   nom: 'Agent de production',
   permissions: [
@@ -64,7 +64,7 @@ function lireCompte(prefixe: string): CompteTest {
   return { email: email.trim().toLowerCase(), mot_de_passe };
 }
 
-async function assurerRole(role: { code: string; nom: string; permissions: Permission[] }): Promise<string> {
+export async function assurerRole(role: { code: string; nom: string; permissions: Permission[] }): Promise<string> {
   const systeme = authentificationService.contexteSysteme();
   const id = await roleService.trouverIdParCode(role.code);
   if (id) {
