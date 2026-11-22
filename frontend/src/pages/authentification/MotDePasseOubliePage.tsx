@@ -1,3 +1,4 @@
+import { Mail } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router';
 
@@ -49,12 +50,14 @@ export function MotDePasseOubliePage() {
       <ChampFormulaire
         libelle="Adresse électronique"
         type="email"
+        icone={Mail}
+        placeholder="nom@entreprise.com"
         autoComplete="email"
         required
         value={email}
         onChange={(evenement) => setEmail(evenement.target.value)}
       />
-      <button type="submit" className="bouton bouton--large" disabled={envoi || !email}>
+      <button type="submit" className="bouton bouton--large bouton--principal" disabled={envoi || !email}>
         {envoi ? 'Envoi…' : 'Recevoir le lien'}
       </button>
       <Link to="/connexion" className="formulaire__lien">

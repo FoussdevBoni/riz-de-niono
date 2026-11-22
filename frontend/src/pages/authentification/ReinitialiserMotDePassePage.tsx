@@ -1,3 +1,4 @@
+import { LockKeyhole } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
@@ -73,6 +74,7 @@ export function ReinitialiserMotDePassePage() {
       <ChampFormulaire
         libelle="Nouveau mot de passe"
         type="password"
+        icone={LockKeyhole}
         autoComplete="new-password"
         aide={`Au moins ${LONGUEUR_MIN} caractères.`}
         minLength={LONGUEUR_MIN}
@@ -83,13 +85,14 @@ export function ReinitialiserMotDePassePage() {
       <ChampFormulaire
         libelle="Confirmation"
         type="password"
+        icone={LockKeyhole}
         autoComplete="new-password"
         required
         erreur={erreurConfirmation}
         value={confirmation}
         onChange={(evenement) => setConfirmation(evenement.target.value)}
       />
-      <button type="submit" className="bouton bouton--large" disabled={envoi || nouveau.length < LONGUEUR_MIN || nouveau !== confirmation}>
+      <button type="submit" className="bouton bouton--large bouton--principal" disabled={envoi || nouveau.length < LONGUEUR_MIN || nouveau !== confirmation}>
         {envoi ? 'Enregistrement…' : 'Enregistrer le mot de passe'}
       </button>
     </form>
